@@ -1,0 +1,120 @@
+{
+  "bodyPath": "/mem/QmcCcPTqmckdXLBwPQXxfyW2BbFcUT6gqv9oGeWDkrNTyD",
+  "commit": {
+    "message": "created dataset",
+    "path": "/mem/QmZZfXr5fHxAvei1Ce5tWnkVn63HKGSAK7syVdAbxcWbLS",
+    "affix": "cm:0",
+    "signature": "GxXsCQFH00n0y92LMGPON9n1fk++Nnrzw3lCWkGW0NdN7MzIkZWKs8b0JRksJAt6UngZOlRITS2zLxHqhwI8by/QzLl08jwV30RzvyVeTIlScDfN6BHCA1CcMcxOSL6nkgqDBXIQJZozM9e4Y5NJ4t+pIyo3JoMCF0SzzlTUkD3G6g1jGDVBeqYrsdb07l1T4IdGbDBrF1U8kvKF51CLfgRH5Oj/bq4LqgoN1EoMCP/4Ke6eJzy885rJ73BYpVEhU7T0WY6iiHvFzmaJ7+lSzy6QMxGJ6+lgBaQ0NJaSNq15nH2z1SBNkN3gY4Eag5vLX78NVvp7dOnW/7xqsOVmWQ==",
+    "timestamp": "2001-01-01T01:01:01.000000001Z",
+    "title": "I'm a commit"
+  },
+  "meta": {
+    "path": "/mem/QmRg6JaFDRifKfaHw5ZUAhGDUoFLG47u1ApNm5qkcEdoQT",
+    "affix": "md:0",
+    "title": "dataset with all components example"
+  },
+  "affix": "ds:0",
+  "structure": {
+    "checksum": "/mem/QmcCcPTqmckdXLBwPQXxfyW2BbFcUT6gqv9oGeWDkrNTyD",
+    "depth": 2,
+    "errCount": 5,
+    "entries": 5,
+    "format": "csv",
+    "formatConfig": {
+      "headerRow": true
+    },
+    "length": 155,
+    "path": "/mem/QmPVz1ehh6Q4WNSBguLorASVoH84YWvCrn2hanDoBHCaod",
+    "affix": "st:0",
+    "schema": {
+      "items": {
+        "items": [
+          {
+            "title": "title",
+            "type": "string"
+          },
+          {
+            "title": "duration",
+            "type": "integer"
+          }
+        ],
+        "type": "array"
+      },
+      "type": "array"
+    }
+  },
+  "stats": {
+    "path": "/mem/QmS8FiQV4pQ89vLSoqrhvnodkgXaimyZ5uuWXYqQeHea4N",
+    "affix": "sa:0",
+    "stats": [
+      {
+        "count": 5,
+        "frequencies": {
+          "chatham": 1,
+          "chicago": 1,
+          "new york": 1,
+          "raleigh": 1,
+          "toronto": 1
+        },
+        "maxLength": 8,
+        "minLength": 7,
+        "type": "string",
+        "unique": 5
+      },
+      {
+        "count": 5,
+        "frequencies": {
+          "250000": 1,
+          "300000": 1,
+          "35000": 1,
+          "40000000": 1,
+          "8500000": 1
+        },
+        "maxLength": 8,
+        "minLength": 5,
+        "type": "string",
+        "unique": 5
+      },
+      {
+        "count": 5,
+        "frequencies": {
+          "44.4": 2,
+          "50.65": 1,
+          "55.5": 1,
+          "65.25": 1
+        },
+        "maxLength": 5,
+        "minLength": 4,
+        "type": "string",
+        "unique": 4
+      },
+      {
+        "count": 5,
+        "frequencies": {
+          "false": 1,
+          "true": 4
+        },
+        "maxLength": 5,
+        "minLength": 4,
+        "type": "string",
+        "unique": 2
+      }
+    ]
+  },
+  "transform": {
+    "affix": "tf:0",
+    "resources": {
+      "foo": {
+        "path": "/not/a/real/path"
+      }
+    },
+    "scriptPath": "/mem/QmaCHzMEoDKF21Qd3emkT1mWEBS5uZG5BxLeJNbaXxghWc",
+    "syntax": "sql"
+  },
+  "viz": {
+    "format": "html",
+    "affix": "vz:0",
+    "renderedPath": "/mem/QmYVoyHY9TxhDFkAKTavgqKxv6fPZ7fMv3pvMcz9NEtzik",
+    "scriptPath": "/mem/QmedXhMECTMY5x92PavJMAef4g5bW1KT5PpATvxJYmu4Fv"
+  }
+}

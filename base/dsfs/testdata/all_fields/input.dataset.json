@@ -1,0 +1,70 @@
+{
+  "affix": "ds:0",
+  "commit": {
+    "affix": "cm:0",
+    "title": "I'm a commit"
+  },
+  "meta": {
+    "affix": "md:0",
+    "title": "dataset with all components example"
+  },
+  "transform": {
+    "affix": "tf:0",
+    "syntax": "sql",
+    "scriptPath": "foo.star",
+    "structure": {
+      "affix": "st:0",
+      "format": "csv",
+      "formatConfig": {
+        "headerRow": true
+      },
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": [
+            {
+              "title": "title",
+              "type": "string"
+            },
+            {
+              "title": "duration",
+              "type": "integer"
+            }
+          ]
+        }
+      }
+    },
+    "resources": {
+      "foo": { "path": "/not/a/real/path" }
+    }
+  },
+  "structure": {
+    "affix": "st:0",
+    "format": "csv",
+    "formatConfig": {
+      "headerRow": true
+    },
+    "schema": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": [
+          {
+            "title": "title",
+            "type": "string"
+          },
+          {
+            "title": "duration",
+            "type": "integer"
+          }
+        ]
+      }
+    }
+  },
+  "viz": {
+    "format": "html",
+    "affix": "vz:0",
+    "scriptPath": "bar"
+  }
+}

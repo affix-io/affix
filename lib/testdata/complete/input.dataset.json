@@ -1,0 +1,132 @@
+{
+  "affix": "ds:0",
+  "commit": {
+    "affix": "cm:0",
+    "title": "I'm a commit"
+  },
+  "meta": {
+    "affix": "md:0",
+    "title": "dataset with all submodels example"
+  },
+  "transform": {
+    "affix": "tf:0",
+    "syntax": "sql",
+    "data": "select * from foo",
+    "structure": {
+      "affix": "st:0",
+      "format": "csv",
+      "formatConfig": {
+        "headerRow": true
+      },
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": [
+            {
+              "title": "title",
+              "type": "string"
+            },
+            {
+              "title": "duration",
+              "type": "integer"
+            }
+          ]
+        }
+      }
+    },
+    "resources": {
+      "foo": "/not/a/real/path"
+    }
+  },
+  "abstractTransform": {
+    "affix": "tf:0",
+    "data": "select * from a",
+    "structure": {
+      "affix": "st:0",
+      "format": "csv",
+      "formatConfig": {
+        "headerRow": true
+      },
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": [
+            {
+              "title": "a",
+              "type": "string"
+            },
+            {
+              "title": "b",
+              "type": "integer"
+            }
+          ]
+        }
+      }
+    },
+    "resources": {
+      "a": "/fake/path/to/abstract/dataset/"
+    }
+  },
+  "abstract": {
+    "affix": "ds:0",
+    "structure": {
+      "affix": "st:0",
+      "format": "csv",
+      "formatConfig": {
+        "headerRow": true
+      },
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": [
+            {
+              "title": "a",
+              "type": "string"
+            },
+            {
+              "title": "b",
+              "type": "integer"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "structure": {
+    "affix": "st:0",
+    "format": "csv",
+    "formatConfig": {
+      "headerRow": true
+    },
+    "schema": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": [
+          {
+            "title": "title",
+            "type": "string"
+          },
+          {
+            "title": "duration",
+            "type": "integer"
+          }
+        ]
+      }
+    }
+  },
+  "visconfig": {
+    "format": "foo",
+    "affix": "vc:0",
+    "visualizations": {
+      "type": "bar",
+      "colors": {
+        "bars": "#ffffff",
+        "background": "#000000"
+      }
+    }
+  }
+}

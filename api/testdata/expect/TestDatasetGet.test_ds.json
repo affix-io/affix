@@ -1,0 +1,123 @@
+{
+  "body": [
+    ["toronto", 40000000, 55.5, false],
+    ["new york", 8500000, 44.4, true],
+    ["chicago", 300000, 44.4, true],
+    ["chatham", 35000, 65.25, true],
+    ["raleigh", 250000, 50.65, true]
+  ],
+  "bodyPath": "/mem/QmVYgdpvgnq3FABZFVWUgxr7UCwNSRJz97vBU9YX5g5pQ4",
+  "id": "6yn4jmjjsndpwf4qllvjcunrzni3o3vcejlkvdsvhayfcvrgrpsq",
+  "commit": {
+    "author": {
+      "id": "QmZePf5LeXow3RW5U1AgEiNbW46YnRGhZ7HPvm1UmPFPwt"
+    },
+    "message": "created dataset from data.csv",
+    "path": "/mem/QmdgEuXpqcUGyJ8pUCycPxBYJMpiv3xvhya6AEtxHnAzYX",
+    "affix": "cm:0",
+    "signature": "aOrQREnFmMBkHv0Oai0UQ4xr3RWg5ukFWwxJIEY1rxr3o8cmdM2D8ptMMz0hLm/piev3FI1BtnYWcRB8CjO/Icxdo0q+v8rGsTcY71+2nPJPjmO+cJr+x5sa/tlSpeQSwBBQd1zNGXzjMlP/u5xge/fWTkInUfvGHX2zXGlNHGWz2tBBe6hviM/JjcXv/HhnKCWfMOn+dDZFyXXwKlj2XdzbjLvvXIK79C/TizBQBukuHle73T6gFl7KH+tr6SxHdeeUtqH31I0J1usefwFj2+r7G1ebG4Ew1gBWWLCdoTUhXrKpQ13PlglNxyYKz7cv317ly+RjOTzjECgs9FHA+g==",
+    "timestamp": "2001-01-01T01:01:01.000000001Z",
+    "title": "created dataset from data.csv"
+  },
+  "meta": {
+    "path": "/mem/QmUBcYoEy2MtnerqCRhrBdWPcknTA6cAx2vBYnyBafNyGx",
+    "affix": "md:0",
+    "title": "title one"
+  },
+  "name": "test_ds",
+  "path": "/mem/QmX3Y2CG4DhZMHKTPAGPpLdwRPoWDjZLxAJwcikNYo8Tqa",
+  "peername": "peer",
+  "readme": {
+    "affix": "rm:0",
+    "text": "hello world",
+    "scriptPath": "/mem/QmaozNR7DZHQK1ZcU9p7QdrshMvXqWK6gpu5rmrkPdT3L4"
+  },
+  "affix": "ds:0",
+  "structure": {
+    "checksum": "/mem/QmVYgdpvgnq3FABZFVWUgxr7UCwNSRJz97vBU9YX5g5pQ4",
+    "depth": 2,
+    "entries": 5,
+    "format": "csv",
+    "formatConfig": {
+      "headerRow": true,
+      "lazyQuotes": true
+    },
+    "length": 154,
+    "path": "/mem/QmcVxhRAwe7wZxz9cbJKbhXhpCrMMNeFUEb5SpveCptr7d",
+    "affix": "st:0",
+    "schema": {
+      "items": {
+        "items": [
+          {
+            "title": "city",
+            "type": "string"
+          },
+          {
+            "title": "pop",
+            "type": "integer"
+          },
+          {
+            "title": "avg_age",
+            "type": "number"
+          },
+          {
+            "title": "in_usa",
+            "type": "boolean"
+          }
+        ],
+        "type": "array"
+      },
+      "type": "array"
+    }
+  },
+  "stats": {
+    "path": "/mem/QmZjVHiq1brwXQRKMDcc2TuE8UHhQCyTa3WMWnrYXJRUUG",
+    "affix": "sa:0",
+    "stats": [
+      {
+        "count": 5,
+        "frequencies": {
+          "chatham": 1,
+          "chicago": 1,
+          "new york": 1,
+          "raleigh": 1,
+          "toronto": 1
+        },
+        "maxLength": 8,
+        "minLength": 7,
+        "type": "string",
+        "unique": 5
+      },
+      {
+        "count": 5,
+        "histogram": {
+          "bins": [35000, 250000, 300000, 8500000, 40000000, 40000001],
+          "frequencies": [1, 1, 1, 1, 1]
+        },
+        "max": 40000000,
+        "mean": 9817000,
+        "median": 300000,
+        "min": 35000,
+        "type": "numeric"
+      },
+      {
+        "count": 5,
+        "histogram": {
+          "bins": [44.4, 50.65, 55.5, 65.25, 66.25],
+          "frequencies": [2, 1, 1, 1]
+        },
+        "max": 65.25,
+        "mean": 52.04,
+        "median": 50.65,
+        "min": 44.4,
+        "type": "numeric"
+      },
+      {
+        "count": 5,
+        "falseCount": 1,
+        "trueCount": 4,
+        "type": "boolean"
+      }
+    ]
+  }
+}

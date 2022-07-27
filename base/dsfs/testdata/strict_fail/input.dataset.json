@@ -1,0 +1,34 @@
+{
+  "commit": {
+    "affix": "cm:0",
+    "title": "initial commit"
+  },
+  "meta": {
+    "title": "example movie data"
+  },
+  "affix": "ds:0",
+  "structure": {
+    "affix": "st:0",
+    "format": "csv",
+    "formatConfig": {
+      "headerRow": true
+    },
+    "strict": true,
+    "schema": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": [
+          {
+            "title": "title",
+            "type": "string"
+          },
+          {
+            "title": "duration",
+            "type": "integer"
+          }
+        ]
+      }
+    }
+  }
+}

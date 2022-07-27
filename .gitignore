@@ -1,0 +1,6 @@
+.DS_Store
+.dataset
+.affix
+/affix
+node_modules
+coverage.txt

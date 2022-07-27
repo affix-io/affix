@@ -1,0 +1,69 @@
+[
+  {
+    "initID": "ghculhp32kpjkhxb6wpxeucdwcjpwws2ke7cmu3zk3g4v6sgvyla",
+    "username": "peer",
+    "profileID": "QmZePf5LeXow3RW5U1AgEiNbW46YnRGhZ7HPvm1UmPFPwt",
+    "name": "cities",
+    "path": "/mem/QmWMa5BokbgXoq4AEv7HQXDPkNzqbb8EA9x2WrpWhafvns",
+    "metaTitle": "example city data",
+    "bodySize": 155,
+    "bodyRows": 5,
+    "bodyFormat": "csv",
+    "commitTime": "2001-01-01T01:01:01.000000001Z",
+    "commitTitle": "initial commit",
+    "commitMessage": "created dataset"
+  },
+  {
+    "initID": "32mmooius2uvmzjdosvs5fs7ybqbf3bvg5pqblr5ival7zjnqlea",
+    "username": "peer",
+    "profileID": "QmZePf5LeXow3RW5U1AgEiNbW46YnRGhZ7HPvm1UmPFPwt",
+    "name": "counter",
+    "path": "/mem/QmZ6YJEyYZMwNVsei5tjvvz8KEx5ru7QpT9NKLAHWJLKEt",
+    "metaTitle": "it's a counter",
+    "bodySize": 56,
+    "bodyRows": 20,
+    "bodyFormat": "csv",
+    "commitTime": "2001-01-01T01:01:01.000000001Z",
+    "commitTitle": "initial commit",
+    "commitMessage": "created dataset"
+  },
+  {
+    "username": "peer",
+    "profileID": "QmZePf5LeXow3RW5U1AgEiNbW46YnRGhZ7HPvm1UmPFPwt",
+    "name": "craigslist",
+    "path": "/mem/QmWXEzg81sFUadCQociDLjsjeCSu1zEhLwZ7hsxaxRmM1U",
+    "bodySize": 18308,
+    "bodyRows": 5,
+    "bodyFormat": "json",
+    "commitTime": "2001-01-01T01:01:01.000000001Z",
+    "commitTitle": "initial commit",
+    "commitMessage": "created dataset"
+  },
+  {
+    "username": "peer",
+    "profileID": "QmZePf5LeXow3RW5U1AgEiNbW46YnRGhZ7HPvm1UmPFPwt",
+    "name": "movies",
+    "path": "/mem/QmXkLt1xHqtJjjGoT2reGZLBFELsioWkJ24yDjchGpu63W",
+    "metaTitle": "example movie data",
+    "bodySize": 49753,
+    "bodyRows": 2335,
+    "bodyFormat": "csv",
+    "numErrors": 4,
+    "commitTime": "2001-01-01T01:01:01.000000001Z",
+    "commitTitle": "initial commit",
+    "commitMessage": "created dataset"
+  },
+  {
+    "username": "peer",
+    "profileID": "QmZePf5LeXow3RW5U1AgEiNbW46YnRGhZ7HPvm1UmPFPwt",
+    "name": "sitemap",
+    "path": "/mem/QmWqMAL6EQ1vZfygYnxr8YzYdWzegijXZ7JMkc1z3GrXMP",
+    "metaTitle": "epa.gov sitemap entry sample",
+    "bodySize": 12556,
+    "bodyRows": 11,
+    "bodyFormat": "json",
+    "commitTime": "2001-01-01T01:01:01.000000001Z",
+    "commitTitle": "initial commit",
+    "commitMessage": "created dataset"
+  }
+]

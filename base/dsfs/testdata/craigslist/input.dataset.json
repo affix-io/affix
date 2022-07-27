@@ -1,0 +1,25 @@
+{
+  "affix": "ds:0",
+  "commit": {
+    "affix": "cm:0",
+    "title": "initial commit"
+  },
+  "structure": {
+    "checksum": "",
+    "entries": 30,
+    "errCount": 1,
+    "format": "json",
+    "length": 512676,
+    "affix": "st:0",
+    "schema": {
+      "title": "Apartment",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" }
+        }
+      }
+    }
+  }
+}

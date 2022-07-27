@@ -1,0 +1,13 @@
+{
+  "affix": "ds:0",
+  "commit": {
+    "affix": "cm:0",
+    "timestamp": "2017-01-01T01:00:00.000Z",
+    "title": ""
+  },
+  "meta": {
+    "affix": "md:0",
+    "title": "example transform"
+  },
+  "transform": {}
+}

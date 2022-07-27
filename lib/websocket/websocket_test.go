@@ -1,0 +1,190 @@
+package websocket
+
+import (
+	"bufio"
+	"bytes"
+	"context"
+	"net"
+	"net/http"
+	"net/http/httptest"
+	"strings"
+	"testing"
+
+	"github.com/affix-io/affix/auth/key"
+	testkeys "github.com/affix-io/affix/auth/key/test"
+	"github.com/affix-io/affix/auth/token"
+	"github.com/affix-io/affix/event"
+)
+
+func TestWebsocket(t *testing.T) {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	// create key store & add test key
+	kd := testkeys.GetKeyData(0)
+	ks, err := key.NewMemStore()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := ks.AddPubKey(context.Background(), kd.KeyID, kd.PrivKey.GetPublic()); err != nil {
+		t.Fatal(err)
+	}
+
+	// create bus
+	bus := event.NewBus(ctx)
+
+	subsCount := bus.NumSubscribers()
+
+	// create Handler
+	websocketHandler, err := NewHandler(ctx, bus, ks)
+	if err != nil {
+		t.Fatal(err)
+	}
+	wsh := websocketHandler.(*connections)
+
+	// websockets should subscribe the message handler
+	if bus.NumSubscribers() != subsCount+1 {
+		t.Fatalf("failed to subscribe websocket handlers")
+	}
+
+	// add connection
+	randIDStr := "test_connection_id_str"
+	setIDRand(strings.NewReader(randIDStr))
+	connID := newID()
+	setIDRand(strings.NewReader(randIDStr))
+
+	wsh.ConnectionHandler(mockWriterAndRequest())
+	if _, err := wsh.getConn(connID); err != nil {
+		t.Fatal("ConnectionHandler did not create a connection")
+	}
+
+	// create a token from a private key
+	kd = testkeys.GetKeyData(0)
+	tokenStr, err := token.NewPrivKeyAuthToken(kd.PrivKey, kd.KeyID.String(), 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+	// upgrade connection w/ valid token
+	wsh.subscribeConn(connID, tokenStr)
+	proID := kd.KeyID.String()
+	gotConnIDs, err := wsh.getConnIDs(proID)
+	if err != nil {
+		t.Fatal("connections.subscribeConn did not add profileID or conn to subscriptions map")
+	}
+	if _, ok := gotConnIDs[connID]; !ok {
+		t.Fatalf("connections.subscribeConn added incorrect connID to subscriptions map, expected %q, got %q", connID, gotConnIDs)
+	}
+
+	// unsubscribe connection via profileID
+	wsh.unsubscribeConn(proID, "")
+	if _, err := wsh.getConnIDs(proID); err == nil {
+		t.Fatal("connections.unsubscribeConn did not remove the profileID from the subscription map")
+	}
+	wsc, err := wsh.getConn(connID)
+	if err != nil {
+		t.Fatalf("connection %s not found", connID)
+	}
+	if wsc.profileID != "" {
+		t.Error("connections.unsubscribeConn did not remove the profileID from the conn")
+	}
+
+	// remove the connection
+	wsh.removeConn(connID)
+	if _, err := wsh.getConn(connID); err == nil {
+		t.Fatal("connections.removeConn did not remove the connection from the map of conns")
+	}
+}
+
+func TestWebsocketUnsubscribe(t *testing.T) {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	// create key store & add test key
+	kd := testkeys.GetKeyData(0)
+	ks, err := key.NewMemStore()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := ks.AddPubKey(context.Background(), kd.KeyID, kd.PrivKey.GetPublic()); err != nil {
+		t.Fatal(err)
+	}
+
+	// create bus
+	bus := event.NewBus(ctx)
+
+	subsCount := bus.NumSubscribers()
+
+	// create Handler
+	websocketHandler, err := NewHandler(ctx, bus, ks)
+	if err != nil {
+		t.Fatal(err)
+	}
+	wsh := websocketHandler.(*connections)
+
+	// websockets should subscribe the message handler
+	if bus.NumSubscribers() != subsCount+1 {
+		t.Fatalf("failed to subscribe websocket handlers")
+	}
+
+	// add connection
+	randIDStr := "test_connection_id_str"
+	setIDRand(strings.NewReader(randIDStr))
+	connID := newID()
+	setIDRand(strings.NewReader(randIDStr))
+
+	wsh.ConnectionHandler(mockWriterAndRequest())
+	if _, err := wsh.getConn(connID); err != nil {
+		t.Fatal("ConnectionHandler did not create a connection")
+	}
+
+	// create a token from a private key with no profileID
+	kd = testkeys.GetKeyData(0)
+	tokenStr, err := token.NewPrivKeyAuthToken(kd.PrivKey, "", 0)
+	if err != nil {
+		t.Fatal(err)
+	}
+	proID := kd.KeyID.String()
+
+	err = wsh.subscribeConn(connID, tokenStr)
+	if err == nil {
+		t.Fatal("connections.subscribeConn subscribed connection with no profileID to subscriptions map")
+	}
+	_, err = wsh.getConn(connID)
+	if err == nil {
+		t.Fatal("connections.subscribeConn got connection which shouldn't exist")
+	}
+	gotConnIDs, err := wsh.getConnIDs(proID)
+	if err == nil {
+		t.Fatal("connections.subscribeConn contains profileID in subscriptions map")
+	}
+	if _, ok := gotConnIDs[connID]; ok {
+		t.Fatalf("connections.subscribeConn added incorrect connID to subscriptions map, expected %q, got %q", connID, gotConnIDs)
+	}
+}
+
+func mockWriterAndRequest() (http.ResponseWriter, *http.Request) {
+	w := mockHijacker{
+		ResponseWriter: httptest.NewRecorder(),
+	}
+
+	r := httptest.NewRequest("GET", "/", nil)
+	r.Header.Set("Connection", "keep-alive, Upgrade")
+	r.Header.Set("Upgrade", "websocket")
+	r.Header.Set("Sec-WebSocket-Version", "13")
+	r.Header.Set("Sec-WebSocket-Key", "test_key")
+	return w, r
+}
+
+type mockHijacker struct {
+	http.ResponseWriter
+}
+
+var _ http.Hijacker = mockHijacker{}
+
+func (mj mockHijacker) Hijack() (net.Conn, *bufio.ReadWriter, error) {
+	c, _ := net.Pipe()
+	r := bufio.NewReader(strings.NewReader("test_reader"))
+	w := bufio.NewWriter(&bytes.Buffer{})
+	rw := bufio.NewReadWriter(r, w)
+	return c, rw, nil
+}
