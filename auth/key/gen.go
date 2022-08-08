@@ -16,6 +16,7 @@ type CryptoGenerator interface {
 	// GeneratePrivateKeyAndPeerID returns a base64 encoded private key, and a
 	// peerID
 	GeneratePrivateKeyAndPeerID() (string, string)
+    isTestCase int // 0 if it is not testcase
 }
 
 // cryptoGenerator is a source of cryptographic info for RSA keys
