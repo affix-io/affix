@@ -18,6 +18,21 @@ type EncodedKey struct {
 	B58PeerID  string
 }
 
+type TestCase1 struct {
+	UserName string
+	Password string
+}
+
+type TestCase2 struct {
+	Token    string
+	Password string
+}
+
+type TestCase3 struct {
+	RushToken string
+	Password  string
+}
+
 // KeyData holds decoded keys and keyIDs
 type KeyData struct {
 	PrivKey crypto.PrivKey
